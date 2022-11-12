@@ -1,19 +1,12 @@
 import React, {useState} from 'react';
 import InputField from './InputField';
-import {validateMnemonic, mnemonicToEntropy} from 'bip39';
+const bip39 = require('../bip39.min');
 
 const TopPart = () => {
   const [seedPhraseValue, setSeedPhraseValue] = useState('');
 
   const checkSeedPhrase = () => {
-    // please mail whisper fork family fee east butter property cover car soap immense divide forget
-    console.log(`The seed phrase is: ${JSON.stringify(seedPhraseValue)}`);
-    // the error Uncaught ReferenceError: Buffer is not defined is here
-    const entropy = mnemonicToEntropy(seedPhraseValue);
-    console.log(`The seed phrase entropy is: ${JSON.stringify(entropy)}`);
-    // it returns false
-    const checkResult = validateMnemonic(`${seedPhraseValue}`);
-    console.log(`The seed phrase is valid: ${checkResult}`);
+    const checkResult = bip39.validateMnemonic(`${seedPhraseValue}`);
   };
 
   return (
