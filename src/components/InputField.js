@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputField = ({inputLabel, currenFieldValue, onChange}) => {
+const InputField = ({inputLabel, currenFieldValue, onChange, isReadOnly}) => {
   return (
     <div className="mb-6 pr-4" id={`inputField-${inputLabel.toLowerCase().replace(/ /g, '_')}`}>
       <label
@@ -13,7 +13,24 @@ const InputField = ({inputLabel, currenFieldValue, onChange}) => {
       <input
         type="text"
         id={`input-${inputLabel.toLowerCase().replace(/ /g, '_')}`}
-        className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+        className=
+          "
+          border
+          text-sm
+          rounded-lg
+          block
+          w-full
+          p-2.5
+          bg-gray-700
+          border-gray-600
+          placeholder-gray-400
+          text-white
+          focus:ring-blue-500
+          focus:border-blue-500
+          disabled:opacity-50
+          "
+        readOnly={isReadOnly}
+        disabled={isReadOnly}
         value={currenFieldValue}
         onChange={onChange}
       />
